@@ -1,0 +1,71 @@
+\setlength{\unitlength}{0.00083333in}
+%
+\begingroup\makeatletter\ifx\SetFigFont\undefined%
+\gdef\SetFigFont#1#2#3#4#5{%
+  \reset@font\fontsize{#1}{#2pt}%
+  \fontfamily{#3}\fontseries{#4}\fontshape{#5}%
+  \selectfont}%
+\fi\endgroup%
+{\renewcommand{\dashlinestretch}{30}
+\begin{picture}(4753,2847)(0,-10)
+%  text 
+%  polyline 
+\path(1620,2055)(1935,2055)(1935,2370)
+	(1620,2370)(1620,2055)
+%  polyline 
+\path(1830.000,1935.000)(1800.000,2055.000)(1770.000,1935.000)
+\path(1800,2055)(1800,750)(2326,750)(2326,990)
+\path(2356.000,870.000)(2326.000,990.000)(2296.000,870.000)
+%  text 
+\put(1965,2565){\makebox(0,0)[lb]{\smash{{{\SetFigFont{10}{12.0}{\ttdefault}{\mddefault}{\updefault}(or A B)}}}}}
+%  polyline 
+\put(2085,750){\ellipse*{60}{60}}
+\path(2085,195)(2085,750)
+%  polyline 
+\path(1500.000,2205.000)(1620.000,2235.000)(1500.000,2265.000)
+\path(1620,2235)(1290,2235)(1290,1140)(2145,1140)
+\path(2025.000,1110.000)(2145.000,1140.000)(2025.000,1170.000)
+%  polyline 
+\path(3480,1485)(2805,1485)(2805,1800)
+	(3480,1800)(3480,1485)
+%  polyline 
+\path(1935,2220)(3100,2220)(3100,1800)
+%  polyline 
+\path(3138,1935)(3100,1800)(3063,1935)
+%  polyline 
+\path(2460,1125)(3117,1125)(3117,1485)
+\path(3147.000,1365.000)(3117.000,1485.000)(3087.000,1365.000)
+%  polyline 
+\path(1065,540)(3690,540)(3690,2820)
+	(1065,2820)(1065,540)
+%  polyline 
+\put(1290,1605){\ellipse*{60}{60}}
+\path(12,1605)(1290,1605)
+%  polyline 
+\path(3481,1664)(4741,1664)
+\path(4621.000,1634.000)(4741.000,1664.000)(4621.000,1694.000)
+%  text 
+\put(1710,0){\makebox(0,0)[lb]{\smash{{{\SetFigFont{10}{12.0}{\rmdefault}{\mddefault}{\updefault}база данных}}}}}
+%  text 
+\put(2841,1567){\makebox(0,0)[lb]{\smash{{{\SetFigFont{10}{12.0}{\rmdefault}{\mddefault}{\updefault}слияние}}}}}
+\put(1740,2160){\makebox(0,0)[lb]{\smash{{{\SetFigFont{10}{12.0}{\ttdefault}{\mddefault}{\updefault}A}}}}}
+%  polyline 
+\path(2145,990)(2460,990)(2460,1305)
+	(2145,1305)(2145,990)
+%  text 
+\put(2265,1095){\makebox(0,0)[lb]{\smash{{{\SetFigFont{10}{12.0}{\ttdefault}{\mddefault}{\updefault}B}}}}}
+%  text 
+\put(3871,2100){\makebox(0,0)[lb]{\smash{{{\SetFigFont{10}{12.0}{\rmdefault}{\mddefault}{\updefault}выходной}}}}}
+%  text 
+\put(3871,1916){\makebox(0,0)[lb]{\smash{{{\SetFigFont{10}{12.0}{\rmdefault}{\mddefault}{\updefault}поток}}}}}
+%  text 
+\put(3871,1733){\makebox(0,0)[lb]{\smash{{{\SetFigFont{10}{12.0}{\rmdefault}{\mddefault}{\updefault}кадров}}}}}
+%  text 
+\put(45,2100){\makebox(0,0)[lb]{\smash{{{\SetFigFont{10}{12.0}{\rmdefault}{\mddefault}{\updefault}входной}}}}}
+%  text 
+\put(45,1916){\makebox(0,0)[lb]{\smash{{{\SetFigFont{10}{12.0}{\rmdefault}{\mddefault}{\updefault}поток}}}}}
+%  text 
+\put(45,1733){\makebox(0,0)[lb]{\smash{{{\SetFigFont{10}{12.0}{\rmdefault}{\mddefault}{\updefault}кадров}}}}}
+
+\end{picture}
+}

@@ -1,0 +1,59 @@
+\setlength{\unitlength}{0.00083333in}
+%
+\begingroup\makeatletter\ifx\SetFigFont\undefined%
+\gdef\SetFigFont#1#2#3#4#5{%
+  \reset@font\fontsize{#1}{#2pt}%
+  \fontfamily{#3}\fontseries{#4}\fontshape{#5}%
+  \selectfont}%
+\fi\endgroup%
+{\renewcommand{\dashlinestretch}{30}
+\begin{picture}(3564,939)(0,-10)
+%  polyline 
+\path(912,897)(912,642)
+\path(1677,627)(2262,627)(2262,912)(1677,912)(1677,627)
+\path(1962,897)(1962,642)
+\path(2877,612)(3462,612)(3462,897)(2877,897)(2877,612)
+\path(3162,882)(3162,627)
+\path(372,12)(1176,12)(1176,297)(372,297)(372,12)
+\path(627,627)(1212,627)(1212,912)(627,912)(627,627)
+
+\path(12,762)(626,762)
+\path(506,732)(626,762)(506,792)
+
+\put(1062,762){\ellipse*{60}{60}}
+\path(1062,762)(1677,762)
+\path(1557,732)(1677,762)(1557,792)
+
+\put(777,777){\ellipse*{60}{60}}
+\path(777,777)(777,297)
+\path(747,417)(777,297)(807,417)
+
+\put(2112,762){\ellipse*{60}{60}}
+\path(2112,762)(2877,762)
+\path(2757,732)(2877,762)(2757,792)
+
+\put(1827,777){\ellipse*{60}{60}}
+
+\path(1827,777)(1827,297)
+\path(1797,417)(1827,297)(1857,417)
+
+\put(3027,762){\ellipse*{60}{60}}
+
+\path(3027,762)(3027,297)
+\path(2997,417)(3027,297)(3057,417)
+
+\put(3312,762){\ellipse*{60}{60}}
+
+\path(3312,762)(3312,297)
+\path(3282,417)(3312,297)(3342,417)
+
+\path(2817,12)(3102,12)(3102,297)(2817,297)(2817,12)
+\path(3267,12)(3552,12)(3552,297)(3267,297)(3267,12)
+\path(1407,12)(2576,12)(2576,297)(1407,297)(1407,12)
+%  text 
+\put(418,117){\makebox(0,0)[lb]{\smash{{{\SetFigFont{10}{12.0}{\ttdefault}{\mddefault}{\updefault}complex}}}}}
+\put(3357,102){\makebox(0,0)[lb]{\smash{{{\SetFigFont{10}{12.0}{\ttdefault}{\mddefault}{\updefault}4}}}}}
+\put(1467,117){\makebox(0,0)[lb]{\smash{{{\SetFigFont{10}{12.0}{\ttdefault}{\mddefault}{\updefault}rectangular}}}}}
+\put(2922,102){\makebox(0,0)[lb]{\smash{{{\SetFigFont{10}{12.0}{\ttdefault}{\mddefault}{\updefault}3}}}}}
+\end{picture}
+}

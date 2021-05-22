@@ -1,0 +1,47 @@
+\setlength{\unitlength}{0.00083333in}
+%
+\begingroup\makeatletter\ifx\SetFigFont\undefined%
+\gdef\SetFigFont#1#2#3#4#5{%
+  \reset@font\fontsize{#1}{#2pt}%
+  \fontfamily{#3}\fontseries{#4}\fontshape{#5}%
+  \selectfont}%
+\fi\endgroup%
+{\renewcommand{\dashlinestretch}{30}
+\begin{picture}(5161,3633)(0,-10)
+\path(1815,2910)(1005,2100)
+\path(1005,2100)(465,1560)
+\path(4515,480)(4245,210)
+\path(1275,3450)(735,2910)
+\path(1275,3450)(1815,2910)(3705,1560)(4515,480)(4785,210)
+\path(3165,1020)(3435,750)
+\path(3165,1020)(2895,750)
+\path(3705,1560)(3165,1020)
+\path(1545,1560)(1815,1290)
+\path(1545,1560)(1275,1290)
+\path(1005,2100)(1545,1560)
+\put(1005,2100){\ellipse*{60}{60}}
+\put(3705,1560){\ellipse*{60}{60}}
+\put(1815,2910){\ellipse*{60}{60}}
+\put(4515,480){\ellipse*{60}{60}}
+\put(1275,3450){\ellipse*{60}{60}}
+\put(3165,1020){\ellipse*{60}{60}}
+\put(1545,1560){\ellipse*{60}{60}}
+
+%  spline 
+\put(600,2700){\makebox(0,0)[lb]{\smash{{{\SetFigFont{10}{12.0}{\ttdefault}{\mddefault}{\updefault}A 8}}}}}
+\put(810,3510){\makebox(0,0)[lb]{\smash{{{\SetFigFont{10}{12.0}{\ttdefault}{\mddefault}{\updefault}$\{$A B C D E F G H$\}$ 17}}}}}
+\put(1890,2910){\makebox(0,0)[lb]{\smash{{{\SetFigFont{10}{12.0}{\ttdefault}{\mddefault}{\updefault}$\{$B C D E F G H$\}$ 9}}}}}
+\put(3780,1560){\makebox(0,0)[lb]{\smash{{{\SetFigFont{10}{12.0}{\ttdefault}{\mddefault}{\updefault}$\{$E F G H$\}$ 4}}}}}
+\put(4515,540){\makebox(0,0)[lb]{\smash{{{\SetFigFont{10}{12.0}{\ttdefault}{\mddefault}{\updefault}$\{$G H$\}$ 2}}}}}
+\put(4725,0){\makebox(0,0)[lb]{\smash{{{\SetFigFont{10}{12.0}{\ttdefault}{\mddefault}{\updefault}H 1}}}}}
+\put(4050,0){\makebox(0,0)[lb]{\smash{{{\SetFigFont{10}{12.0}{\ttdefault}{\mddefault}{\updefault}G 1}}}}}
+\put(3300,540){\makebox(0,0)[lb]{\smash{{{\SetFigFont{10}{12.0}{\ttdefault}{\mddefault}{\updefault}F 1}}}}}
+\put(2700,540){\makebox(0,0)[lb]{\smash{{{\SetFigFont{10}{12.0}{\ttdefault}{\mddefault}{\updefault}E 1}}}}}
+\put(2400,1035){\makebox(0,0)[lb]{\smash{{{\SetFigFont{10}{12.0}{\ttdefault}{\mddefault}{\updefault}$\{$E F$\}$ 2}}}}}
+\put(1680,1080){\makebox(0,0)[lb]{\smash{{{\SetFigFont{10}{12.0}{\ttdefault}{\mddefault}{\updefault}D 1}}}}}
+\put(1080,1080){\makebox(0,0)[lb]{\smash{{{\SetFigFont{10}{12.0}{\ttdefault}{\mddefault}{\updefault}C 1}}}}}
+\put(1545,1620){\makebox(0,0)[lb]{\smash{{{\SetFigFont{10}{12.0}{\ttdefault}{\mddefault}{\updefault}$\{$C D$\}$ 2}}}}}
+\put(330,1350){\makebox(0,0)[lb]{\smash{{{\SetFigFont{10}{12.0}{\ttdefault}{\mddefault}{\updefault}B 3}}}}}
+\put(0,2085){\makebox(0,0)[lb]{\smash{{{\SetFigFont{10}{12.0}{\ttdefault}{\mddefault}{\updefault}$\{$B C D$\}$ 5}}}}}
+\end{picture}
+}

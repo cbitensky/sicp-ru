@@ -1,0 +1,103 @@
+\setlength{\unitlength}{0.00083333in}
+%
+\begingroup\makeatletter\ifx\SetFigFont\undefined%
+\gdef\SetFigFont#1#2#3#4#5{%
+  \reset@font\fontsize{#1}{#2pt}%
+  \fontfamily{#3}\fontseries{#4}\fontshape{#5}%
+  \selectfont}%
+\fi\endgroup%
+{\renewcommand{\dashlinestretch}{30}
+\begin{picture}(4902,1689)(0,-10)
+\path(1845,897)(1845,642)
+\path(1575,1377)(2160,1377)(2160,1662)
+	(1575,1662)(1575,1377)
+\drawline(2160,1377)(2160,1377)
+\path(1860,1647)(1860,1392)
+\path(2475,627)(3060,627)(3060,912)
+	(2475,912)(2475,627)
+\drawline(3060,627)(3060,627)
+\path(2760,897)(2760,642)
+\path(3060,897)(2760,642)
+\path(3270,1377)(3855,1377)(3855,1662)
+	(3270,1662)(3270,1377)
+\drawline(3855,1377)(3855,1377)
+\path(3555,1647)(3555,1392)
+\path(4305,1377)(4890,1377)(4890,1662)
+	(4305,1662)(4305,1377)
+\drawline(4890,1377)(4890,1377)
+\path(4590,1647)(4590,1392)
+\path(4890,1662)(4590,1377)
+%  spline 
+\path(2475,12)(2760,12)(2760,297)
+	(2475,297)(2475,12)
+\drawline(2760,12)(2760,12)
+\path(1575,12)(1860,12)(1860,297)
+	(1575,297)(1575,12)
+\drawline(1860,12)(1860,12)
+\path(3270,627)(3555,627)(3555,912)
+	(3270,912)(3270,627)
+\drawline(3555,627)(3555,627)
+\path(1560,627)(2145,627)(2145,912)
+	(1560,912)(1560,627)
+\drawline(2145,627)(2145,627)
+%  text 
+\put(4260,1212){\makebox(0,0)[lb]{\smash{{{\SetFigFont{10}{12.0}{\ttdefault}{\mddefault}{\updefault}4}}}}}
+\path(4335,627)(4620,627)(4620,912)
+	(4335,912)(4335,627)
+\drawline(4620,627)(4620,627)
+
+\put(1725,1512){\ellipse*{60}{60}}
+\path(1725,1512)(1725,927)
+\path(1695.000,1047.000)(1725.000,927.000)(1755.000,1047.000)
+
+\put(1710,762){\ellipse*{60}{60}}
+\path(1710,762)(1710,297)
+\path(1680.000,417.000)(1710.000,297.000)(1740.000,417.000)
+
+\put(2010,762){\ellipse*{60}{60}}
+\path(2010,762)(2460,762)
+\path(2325,800)(2460,762)(2325,725)
+
+\put(2610,762){\ellipse*{60}{60}}
+\path(2610,762)(2610,312)
+\path(2580.000,432.000)(2610.000,312.000)(2640.000,432.000)
+
+\put(3420,1512){\ellipse*{60}{60}}
+\path(3420,1512)(3420,912)
+\path(3390.000,1032.000)(3420.000,912.000)(3450.000,1032.000)
+
+\put(3720,1512){\ellipse*{60}{60}}
+\path(3720,1512)(4290,1512)
+\path(4155,1550)(4290,1512)(4155,1475)
+
+\put(2010,1512){\ellipse*{60}{60}}
+\path(2010,1512)(3270,1512)
+\path(3150.000,1482.000)(3270.000,1512.000)(3150.000,1542.000)
+
+\put(4470,1497){\ellipse*{60}{60}}
+\path(4470,1497)(4470,912)
+\path(4440.000,1032.000)(4470.000,912.000)(4500.000,1032.000)
+
+%\put(1110,1512){\ellipse*{60}{60}}
+\path(1110,1512)(1545,1512)
+\path(1425.000,1482.000)(1545.000,1512.000)(1425.000,1542.000)
+%  text 
+\put(0,1467){\makebox(0,0)[lb]{\smash{{{\SetFigFont{10}{12.0}{\ttdefault}{\mddefault}{\updefault}((1 2) 3 4)}}}}}
+%  text 
+\put(1680,102){\makebox(0,0)[lb]{\smash{{{\SetFigFont{10}{12.0}{\ttdefault}{\mddefault}{\updefault}1}}}}}
+%  text 
+\put(2544,86){\makebox(0,0)[lb]{\smash{{{\SetFigFont{10}{12.0}{\ttdefault}{\mddefault}{\updefault}2}}}}}
+%  text 
+\put(3375,717){\makebox(0,0)[lb]{\smash{{{\SetFigFont{10}{12.0}{\ttdefault}{\mddefault}{\updefault}3}}}}}
+%  text 
+\put(4440,702){\makebox(0,0)[lb]{\smash{{{\SetFigFont{10}{12.0}{\ttdefault}{\mddefault}{\updefault}4}}}}}
+%  text 
+\put(2385,462){\makebox(0,0)[lb]{\smash{{{\SetFigFont{10}{12.0}{\ttdefault}{\mddefault}{\updefault}7}}}}}
+%  text 
+\put(1485,462){\makebox(0,0)[lb]{\smash{{{\SetFigFont{10}{12.0}{\ttdefault}{\mddefault}{\updefault}5}}}}}
+%  text 
+\put(1485,1212){\makebox(0,0)[lb]{\smash{{{\SetFigFont{10}{12.0}{\ttdefault}{\mddefault}{\updefault}1}}}}}
+%  text 
+\put(3294,1211){\makebox(0,0)[lb]{\smash{{{\SetFigFont{10}{12.0}{\ttdefault}{\mddefault}{\updefault}2}}}}}
+\end{picture}
+}

@@ -1,0 +1,592 @@
+\documentclass[a5paper]{book}
+\usepackage[english,russian]{babel}
+%\usepackage[activate={true,nocompatibility},final,tracking=true,stretch=10,shrink=10]{microtype}
+\usepackage{graphicx}
+\usepackage{multicol,etoolbox,pictex,synttree}
+\usepackage{bxeepic} %chanes page size!
+%\usepackage{nodetree}\nodetreeregister{preout}
+%\usepackage{lua-visual-debug}
+\makeatletter
+
+\pagewidth  145mm
+\pageheight 1.5\pagewidth
+
+\parindent1em
+\newdimen\normalindent\normalindent\parindent
+
+\hoffset-1in
+\voffset-1in
+\headheight1em
+\footskip0sp
+
+\def\pagediv{12}
+
+\count255=\pagediv\relax
+\advance\count255 by-3
+\edef\textunits{\the\count255}
+
+\def\getunit#1{
+\count255=#1
+\divide\count255 by \pagediv
+\@tempdima\count255sp
+}
+
+\getunit\pageheight
+\textheight\textunits\@tempdima
+\topmargin\@tempdima
+\headsep\@tempdima
+\advance\headsep-\headheight
+\divide\headsep2
+\advance\topmargin-\headheight
+\advance\topmargin-\headsep
+\divide\textheight\baselineskip
+\advance\textheight1sp
+\multiply\textheight\baselineskip
+
+\getunit\pagewidth
+\textwidth\textunits\@tempdima
+\oddsidemargin\@tempdima
+\evensidemargin2\@tempdima
+
+%\widowpenalty  10000
+%\brokenpenalty 10000
+\binoppenalty  10000
+\relpenalty    10000
+\tolerance     9999
+%\finalhyphendemerits 10000
+
+\pdfvariable suppressoptionalinfo 1023
+\parskip0sp
+\pagestyle{headings}
+%\pagestyle{plain}
+
+\def\keywordsuni{}
+\def\keywords#1{\edef\keywordsuni{\uni{#1}}}
+
+\long\def\L#1{\directlua{\unexpanded{#1}}}
+\def\uni#1{\L{utf16('#1')}}
+\def\dotkern{\kern.07em}
+%\def\kerns#1#2#3{#1\dotkern#2\dotkern#3}
+\def\defchar#1{\catcode`#1\active\begingroup\lccode`~=`#1\lowercase{\endgroup\def~}}
+
+\defchar…{...}
+\defchar—{\leavevmode\@Acdash}
+\defchar⫽{\break}
+\defchar⌇{\penalty-5 }
+\defchar␣{~}
+
+\def\title#1#2#3#4{{
+	\def\titleline##1{{\prevdepth-1000pt##1\lineskip1.3ex\baselineskip0sp\par}}
+	\pdfextension info{/Title(\uni{#2})/Author(\L{utf16(gsub('#1', '⫽', ', '))})\ifx\keywordsuni\empty\else/Keywords(\keywordsuni)\fi}
+	\leftskip=0sp plus1fill
+	\rightskip=0sp plus1fill
+	\@tempdima\oddsidemargin
+	\advance\@tempdima-\evensidemargin
+	\ifodd\count0\@tempdima-\@tempdima\fi
+	\ifdim\@tempdima<0sp\advance\rightskip-\@tempdima\else\advance\leftskip\@tempdima\fi
+	\@tempdima\headheight
+	\advance\@tempdima\headsep
+	\advance\@tempdima\topmargin
+	\advance\@tempdima\@tempdima
+	\advance\@tempdima-\pageheight
+	\advance\@tempdima\textheight
+	\ifdim\@tempdima<0sp\advance\topskip-.5\@tempdima\else\def\@textbottom{\vspace\@tempdima}\fi
+	\large
+	\parindent0sp
+	\thispagestyle{empty}
+	\hyphenpenalty10000
+	\titleline{#1}
+	\vfill
+	\titleline{\huge#2}
+	\vfill
+	\titleline{#3}
+	\vfill
+	\saveimageresource{#4.png}
+	\leavevmode\useimageresource width .5\hsize\lastsavedimageresourceindex
+	\vfill
+	\titleline{\the\year}
+	\eject
+}}
+
+\def\sigkern{\par\kern1ex}
+
+\def\dedication#1{
+	\thispagestyle{empty}
+	\noindent{\raggedright\e{#1}\par}
+	\vfill
+}
+
+\def\signature#1{{\par\sigkern\raggedleft\parindent0sp\itshape#1\par}}
+
+\def\@evenhead{\thepage\hskip\headsep\footnotesize\itshape\leftmark\hfil}
+\def\@oddhead{\hfil{\footnotesize\itshape\rightmark}\hskip\headsep\thepage}
+
+\def\numdepth{4}
+\def\forcounters#1#2#3{\@tempcnta#1\loop\unless\ifnum\@tempcnta>#2#3\advance\@tempcnta1\repeat}
+\forcounters1\numdepth{\expandafter\newcount\csname h@\romannumeral\@tempcnta\endcsname}
+\let\h@\@tempcntb
+
+\def\h#1#2{{
+	\par
+%	\pdfextension outline goto name {\L{out(label)}} {\uni{#2}}
+	\centering
+	\normalfont
+	\interlinepenalty\@M
+	\bfseries
+	\def\@dot{}
+	\edef\@num{}
+	\ifnum#1>\numdepth\else
+		\@tempcntb#1
+		\advance\@tempcntb1
+		\forcounters\@tempcntb\numdepth{\expandafter\global\begincsname h@\romannumeral\@tempcnta\endcsname0}
+		\edef\hh{\begincsname h@\romannumeral#1\endcsname}
+		\global\advance\hh1
+		\forcounters1#1{\edef\hh{\begincsname h@\romannumeral\@tempcnta\endcsname}\edef\@num{\@num\@dot\the\hh}\def\@dot{.}}
+	\fi
+	\ifcase#1
+		\clearpage
+		\thispagestyle{empty}
+		\linkdest{\L{out(label)}}
+		\topskip5em
+		{\LARGE#2\par}\markboth{#2}{#2}\nobreak%
+		%
+		\vskip4em\nobreak
+	\or
+		\clearpage
+		\markboth{\@num. #2}{\@num. #2}
+		\thispagestyle{empty}
+		\linkdest{\L{out(label)}}
+		\topskip5em
+		{\LARGE Глава \@num\par}
+		\vskip2em
+		{\huge#2\par}
+		\vskip4em
+	\or
+		\markright{\@num. #2}
+		\vskip3.5ex
+		{\LARGE\@num. #2}\nobreak
+		\vskip2.3ex
+	\or
+		\vskip3.25ex
+		{\Large\@num. #2}\nobreak
+		\vskip1.5ex
+	\or
+		\vskip3.25ex
+		{\large\@num. #2}\nobreak
+		\vskip1.5ex
+	\or %FIXME
+		\vskip3.25ex
+		{#2}\nobreak
+		\vskip1.5ex
+	\fi
+}}
+
+\def\uri#1{\pdfextension startlink user {/Subtype /Link /A << /S /URI /URI (#1) >>}\texttt{#1}\pdfextension endlink}
+
+\def\l#1{\L{label=[[#1]]}}
+\def\r#1#2{\L{ref='#1'}\pdfextension startlink goto name {#1}#2\pdfextension endlink}
+\let\n\relax %FIXME
+\let\xx\relax %FIXME
+
+\def\epileftskip{\leftskip.3\textwidth}
+\long\def\epigraph#1#2{{\interlinepenalty10000\footnotesize\epileftskip\relax#1\sigkern\epileftskip plus 1fill\itshape#2\par}\kern1.5\baselineskip}
+
+
+\def\li{\par•\kern.3em}
+%FIXME
+\newenvironment{plainlist}{\begin{itemize}}{\end{itemize}}
+\newenvironment{plainenum}{\begin{itemize}}{\end{itemize}}
+%\let\item\li
+
+
+\def\toc{
+	\chapter*{Оглавление}%
+	\thispagestyle{empty}%
+	\markboth{Оглавление}{Оглавление}%
+	\@starttoc{toc}%
+}
+
+\newdimen\fnmarkwidth
+\newbox\tempbox
+\long\def\f#1{\unskip\L{isfn=true}\footnote{\ignorespaces#1}\L{isfn=false}}
+\def\@makefnmark{\setbox\tempbox\hbox{\@textsuperscript{\normalfont\kern.1em\@thefnmark}}\fnmarkwidth\wd\tempbox\box\tempbox}
+\def\fa#1{\setbox\tempbox\hbox{#1}\ifdim\wd\tempbox>\fnmarkwidth\fnmarkwidth\wd\tempbox\fi\kern-\fnmarkwidth\hbox to\fnmarkwidth{#1}}
+
+\def\e#1{\emph{#1\@ifnextchar.{}{\@ifnextchar,{}{\/}}}}
+\def\nocorr{\kern0sp}
+\let\i\textit
+\let\b\textbf
+\renewcommand{\c}[1]{\texttt{#1}}
+\def\E#1{\foreignlanguage{english}{#1}}
+\def\R#1{\foreignlanguage{russian}{#1}}
+\newcommand{\xf}[1]{#1\emph{п}}
+\newcommand{\exE}[3]{\x{#2}\e{#1} (\E{#3})}
+\newcommand{\XE}[2]{\x{#1}\e{#1} (\E{#2})}
+
+\def\chaptermark#1{\markboth{\thechapter. #1}{}}
+\def\sectionmark#1{\markright{\thesection. #1}{}}
+
+\long\def\@makefntext#1{\parindent\normalindent\noindent\hb@xt@\normalindent{\hss\@makefnmark\kern.33333333333em}#1}
+
+\def\paragraph{
+	\@startsection{paragraph}{4}{\z@}%
+	{-3.25ex \@plus-1ex \@minus-.2ex}%
+	{1.5ex \@plus .2ex}%
+	{\normalfont\normalsize\bfseries\centering}
+}
+
+\def\@seccntformat#1{\@ifundefined{#1@cntformat}%
+   {\begincsname the#1\endcsname\space}%    default
+   {\begincsname #1@cntformat\endcsname}}%  enable individual control
+\newcommand\section@cntformat{\thesection.\space}       % section-level
+\newcommand\subsection@cntformat{\thesubsection.\space} % subsection-level
+
+\newcounter{exercise}[chapter]
+\renewcommand{\theexercise}{\thechapter.\arabic{exercise}}
+\renewcommand{\@dotsep}{1,8}
+
+\newenvironment{exercise}
+{\refstepcounter{exercise}\label{EX\theexercise}\directlua{exnum = '\theexercise'}\par
+\bigskip\linkdest{e\theexercise}\textbf{Упражнение \theexercise.}\par\nopagebreak}
+{\L{exnum=nil}}
+
+\renewcommand{\topfraction}{2}
+
+\newenvironment{cntrfig}{\begin{figure}\begin{center}}%
+{\end{center}\end{figure}}
+
+\newif\iffirstline
+\def\codeendline{\@ifnextchar\end{}{\iffirstline\else\penalty-10000\null\fi\firstlinefalse}}
+{\catcode`\^^M=\active%
+\gdef\codeobeylines{\catcode`\^^M=\active%
+\let^^M=\codeendline}%
+\global\let^^M=\codeendline}
+
+\def\code{%
+	\par%
+	\medskip%
+	\bgroup%
+	\raggedright%
+	\widowpenalty10000\clubpenalty10000%
+	\@makeother\-\@makeother\<\@makeother\>\@makeother\"%
+	\tt%
+	\parindent0sp%
+	\leftskip\normalindent%
+	\codeobeylines%
+	\obeyspaces%
+	\@ifnextchar\codeendline{\firstlinetrue}{\firstlinefalse}%
+}
+
+\def\endcode{%
+	\par%
+	\egroup%
+	\medskip%
+	\@endparenv%
+}
+
+\let\resp\underline
+\def\prm#1{$\langle$\emph{\rmfamily #1}$\rangle$}
+\let\comm\emph
+
+\def\ns{\ \e{(нс)}}
+\def\x#1{\L{index([[#1]])}}
+\def\X#1{\x{#1}#1}
+\def\xd#1{\L{isdef=true}\x{#1}\L{isdef=false}}
+\def\s#1{\L{indexsee([[#1]])}}
+\def\a#1{\L{index(lastfull, [[#1]])}}
+\def\Xp#1{\L{indexperson([[#1]])}#1}
+
+\newdimen\classskip
+
+\def\printclass#1{
+\smallskip
+\settoheight\classskip A
+\vbox to 0sp{\kern-\classskip\llap{{\Large\bfseries#1}\kern.5em}\vss}
+\vskip-\baselineskip
+\penalty10000
+}
+
+\long\def\term#1{#1\par}
+\long\def\subterm#1{{\leftskip3em\relax #1\par}}
+
+\def\printindex{{
+\columnsep2em
+\begin{multicols}{2}
+\small
+\parindent-1.5em
+\leftskip1.5em
+\rightskip0sp plus 1fill
+\L{printterms(Index, false)}
+\end{multicols}
+}}
+
+
+\def\bib#1{\L{bib([[#1]])}}
+
+\def\Bn#1{#1\L{bibname=[[#1]]}}
+\def\Byh#1{\L{out('\\linkdest{b-'..bibname..'-#1}')}}
+\def\By#1{#1\Byh{#1}}
+
+\renewenvironment{index}{\h0{Предметный указатель}}{\printindex}
+\renewenvironment{bibliography}{\h0{Литература}\parindent0pt\parskip.8em\selectlanguage{english}}{}
+
+\def\pdfdest#1{\pdfextension dest name {#1} xyz}
+\def\linkdest#1{\ifvmode\pdfdest{#1}\else\setbox0\hbox{\raise1em\hbox{\pdfdest{#1}}}\ht0=0sp\box0\fi}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+{\catcode`\%=12\catcode`\#=12\catcode`\$=12
+\L{
+
+utf8  = unicode.utf8
+gsub  = utf8.gsub
+match = utf8.match
+out   = tex.sprint
+sort  = table.sort
+
+glyph_id = node.id 'glyph'
+glue_id  = node.id 'glue'
+disc_id  = node.id 'disc'
+hlist_id = node.id 'hlist'
+vlist_id = node.id 'vlist'
+
+function insertpenalty(head, n)
+	local p = node.new 'penalty'
+	p.penalty = 10000
+	node.insert_before(head, n, p)
+end
+
+luatexbase.add_to_callback('hyphenate', function(head, tail)
+	local prevdash, prevcyr = false, false
+	for n in node.traverse(head) do
+		if n.id == glyph_id then
+			local c = n.char
+			local ischar =
+				   c >= 0x400 and c <= 0x52F
+				or c >= 0x41  and c <= 0x5A
+				or c >= 0x61  and c <= 0x7A
+			local isdash = c == 0x2D
+			if isdash and prevcyr then
+				insertpenalty(head, n)
+			elseif ischar and prevdash then
+				node.insert_before(head, n, node.new(glue_id))
+			end
+			prevcyr, prevdash = ischar, isdash
+		else
+			prevdash, prevcyr = false, false
+		end
+	end
+	lang.hyphenate(head, tail)
+end, 'hyphdashes')
+
+luatexbase.add_to_callback('pre_linebreak_filter', function (head)
+	for n in node.traverse(head) do
+		if n.id == glue_id and n.subtype ~= 15 and (node.dimensions(n) < 2.7 * tex.parindent) then
+			insertpenalty(head, n)
+		end
+		if n.id == 7 and (node.dimensions(n) < 2.7 * tex.parindent) then
+			node.remove(head, n)
+		end 
+	end
+	return true
+end, 'lastparline')
+
+log = texio.write
+
+function showlist(head, level)
+	local n = node.slide(head)
+	log('\n'..string.rep('→', level))
+	while n do
+		local prev = n.prev
+		if n.id == glyph_id then
+			log(utf8.char(n.char))
+			wasglyph = false and true
+		elseif false and wasglyph and n.id == glue_id then
+			log('<!!'..node.type(n.id)..'>')
+			wasglue = true
+			return
+		elseif n.id == disc_id then
+			log('</'..node.type(n.id)..'>')
+			node.remove(head, n)
+		else
+			log('<'..node.type(n.id)..'>')
+		end
+		if (n.id == hlist_id or n.id == vlist_id) and not wasglyph then
+			showlist(n.list, level + 1)
+			if false and wasglue then
+				return
+			end
+		end
+		n = prev
+	end
+end
+
+luatexbase.add_to_callback('pre_output_filter', function (head, groupcode, size, packtype, maxdepth, direction)
+--[[
+	log('\n<<<<<<<<<<<<<<<<<<<<<<\n')
+	wasglue  = false
+	wasglyph = false
+	showlist(head, 0)
+	log('\n>>>>>>>>>>>>>>>>>>>>>>\n')
+--]]
+	return true
+end, 'nolastlinehypen')
+
+
+function gsubs(str, From, To)
+	for i, from in ipairs(From) do
+		str = gsub(str, from, To[i])
+	end
+	return str
+end
+
+function utf16(str)
+	out('\\detokenize{\\376\\377')
+	for c in string.utfvalues(gsubs(str, {'[␣~]', '⫽', '⌇', '  +'}, {' ', ' ', '', ' '})) do
+		out(string.format('\\%03o\\%03o', (c // 256), (c % 256)))
+	end
+	out('}')
+end
+
+Index     = {}
+isfn      = false
+isdef     = false
+destindex = 0
+exnum     = nil
+indexnum  = 0
+
+function subtable(Table, fieldname)
+	if not Table[fieldname] then
+		Table[fieldname] = {}
+	end
+	return Table[fieldname]
+end
+
+function fieldinsert(Table, field, value)
+	table.insert(subtable(Table, field), value)
+end
+
+function termitem(Table, term)
+	if not Table[term] then
+		Table[term] = { ['term'] = term, ['hash'] = gsubs(utf.lower(term), {'[$]\\', '\\[a-z]+ *', '[{}$«]', '`', '([\1-\47\58-\64\91-\96\123-\127])' }, {'@@', '', '', "'`", '*%1'}) }
+	end
+	return Table[term]
+end
+
+function index(term, see)
+	lastfull = term
+	issubterm = string.find(term, '|')
+	if issubterm then
+		term, subterm = match(term, '^(.*)|(.*)$')
+	end
+	lastshort = term
+	Term = termitem(Index, term)
+	if issubterm then
+		Term = termitem(subtable(Term, 'subterms'), subterm)
+	end
+	if see then
+		fieldinsert(Term, 'see', {see, indexnum})
+		indexnum = indexnum + 1
+		termitem(Index, see).indexnum = indexnum
+	else
+		if destindex == 0 then
+			indexnum = indexnum + 1
+			out('\\linkdest{x'..indexnum..'}')
+		end
+		fieldinsert(Term, 'pages', {tex.count[0], isfn, isdef, exnum, (destindex > 0 and destindex or indexnum)})
+		if isdef then
+			Term.defcount = Term.defcount and Term.defcount + 1 or 1
+		end
+	end
+end
+
+function indexperson(term)
+	f, l = match(term, '^(.*) ([^ ]+)$')
+	index(l..', '..f)
+end
+
+function indexsee(term)
+	index(term, lastshort)
+end
+
+function startlink(ref)
+	return '\\leavevmode\\pdfextension startlink goto name {'..ref..'}'
+end
+
+endlink = '\\pdfextension endlink{}'
+emskip = '\\hskip.5em\\relax '
+
+function printterms(Table, issubterm)
+	Array = {}
+	for _, v in pairs(Table) do
+		table.insert(Array, v)
+	end
+	sort(Array, function(a, b) return a.hash < b.hash end)
+	for _, item in ipairs(Array) do
+		if not issubterm then
+			class = utf8.sub(item.hash, 1, 1)
+			if class ~= prevclass then
+				out('\\printclass '..utf8.upper(class))
+				prevclass = class
+			end
+		end
+		Pages = item.pages
+		See = item.see
+		pagesnum = Pages and #Pages or 0
+		wholelink = pagesnum == 1 and not See
+		out((item.indexnum and '\\linkdest{x'..item.indexnum..'}' or '')..'\\'..(issubterm and 'sub' or '')..'term{'..(wholelink and startlink('x'..Pages[1][5]) or '')..item.term..((Pages or See) and '' or ':')..emskip)
+		if Pages then
+			sort(Pages, function(a, b) return a[1] < b[1] end)
+			coma = ''
+			markdefs = item.defcount and pagesnum > item.defcount
+			for _, page in ipairs(Pages) do
+				num = page[1]
+				exnum = page[4]
+				numtext = (page[3] and markdefs and '\\underline{'..num..'}' or num)..(page[2] and '*' or '')
+				out(coma..(wholelink and '' or startlink('x'..page[5]))..numtext..endlink..(exnum and ' '..startlink('e'..exnum)..'('..exnum..')'..endlink or ''))
+				coma = ', '
+			end
+		end
+		if See then
+			wholesee = #See == 1
+			starttext = wholesee and startlink('x'..See[1][2]) or ''
+			out(Pages and ';'..emskip..starttext..'\\e{см.␣также} ' or starttext..'\\e{см.}␣')
+			sort(See, function(a, b) return a[1] < b[1] end)
+			semicolon = ''
+			for _, see in ipairs(See) do
+				seetext = see[1]
+				n = string.find(seetext, ' ('..item.term..')', 1, true)
+				out(semicolon..(wholesee and '' or startlink('x'..see[2]))..(n and string.sub(seetext, 1, n - 1) or seetext)..endlink)
+				semicolon = '; '
+			end
+		end
+		out('}')
+		if item.subterms then
+			printterms(item.subterms, true)
+		end
+	end
+end
+
+function bib(str)
+	f, l = match(gsubs(str, {'см.␣', '[()]', '\\[a-z] *', '{[^{}]*} *', '[␣~]'}, {'', '', '', '', ' '}), '^(%w+)[ ,].*(1%d%d%d)$')
+	out(startlink('b-'..f..'-'..l)..str..endlink)
+end
+
+
+}}
+
+\def\НОД{\mathop{\mbox{НОД}}}
+\def\subm#1{\textsubscript{$#1$}}
+\def\sub#1{\textsubscript{$#1$}}
+
+\begin{document}
+%\directlua{t = token.create('signature')
+%	for k, v in pairs(token) do
+%		texio.write_nl('!!!!!!!!! Key «'..k..'»')
+%	end
+%	texio.write_nl('!!!!!!!!! gm «'..token.get_macro('signature')..'»')
+%}
+
+\input sicp-content
+
+\end{document}
